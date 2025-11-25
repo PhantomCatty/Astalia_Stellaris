@@ -790,7 +790,7 @@
                         <div class="asset-card" style="grid-column: 1 / -1;">
                             <div class="card-media" style="height: 400px;">
                                 <!-- 视频位 -->
-                                <video src="assets/Forget_You_Not.mp4" controls></video>
+                                <iframe src="https://www.youtube.com/watch?v=UsMDVWR4Edk" frameborder="0"></iframe>
                                 <!-- <div style="text-align:center;">直播切片演示视频 (Project Reel)</div> -->
                             </div>
                             <div class="card-info">
@@ -968,27 +968,27 @@
         const musicData = [
             {
                 src: "assets/music/Starborn_of_Luciarion.mp3",   
-                desc: "象征星塔诞生的主题曲。旋律宏大而悠远，使用了管弦乐与合成器的混合编制。"
+                desc: "Starborn of Luciarion - 表现星之子诞生的辉煌时刻，节奏激昂。"
             },
             {
                 src: "assets/music/The_Second_Starnucleus_Tower.mp3",
-                desc: "快节奏的电子舞曲，表现数字灵魂觉醒时的躁动与不安。"
+                desc: "The Second Starnucleus Tower - 宏伟的建筑与古老的科技感交织。"
             },
             {
                 src: "assets/music/Astheral.mp3",
-                desc: "探索外层空间时的背景音乐，充满了空灵的氛围感。"
+                desc: "Astheral - 象征星塔诞生的主题曲。旋律宏大而悠远，使用了管弦乐与合成器的混合编制。"
             },
             {
                 src: "assets/music/Nyxarion.mp3",
-                desc: "探索外层空间时的背景音乐，充满了空灵的氛围感。"
+                desc: "Nyxarion - 深邃夜空下的低语，静谧而略带忧伤。"
             },
             {
                 src: "assets/music/Iridis_Medusae_Vinum.mp3",
-                desc: "探索外层空间时的背景音乐，充满了空灵的氛围感。"
+                desc: "Iridis Medusae Vinum - 充满了神秘色彩的旋律，仿佛置身于幻彩的星云之中。"
             },
             {
                 src: "assets/music/Zephyr_Leviathan.mp3",
-                desc: "探索外层空间时的背景音乐，充满了空灵的氛围感。"
+                desc: "Zephyr Leviathan - 如同巨兽在云海中穿梭，气势磅礴。"
             }
         ];
 
@@ -1011,7 +1011,10 @@
 
         function loadAllMetadata() {
             musicData.forEach((track, index) => {
-                fetchMetadata(track.src, (data) => {
+                // 确保 URL 是绝对路径，避免 jsmediatags 在某些环境下解析相对路径出错
+                const absoluteUrl = new URL(track.src, window.location.href).href;
+
+                fetchMetadata(absoluteUrl, (data) => {
                     // 将读取到的数据存入 track 对象
                     musicData[index] = { ...musicData[index], ...data };
                     // 刷新列表显示
