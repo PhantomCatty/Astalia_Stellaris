@@ -967,24 +967,24 @@
         // 注意：为了读取 MP3 元数据，请使用 Live Server 运行或部署到服务器，直接双击打开 HTML 可能因浏览器安全策略无法读取。
         const musicData = [
             {
-                src: "assets/music/Starborn_of_Luciarion.mp3",   
-                desc: "Starborn of Luciarion - 表现星之子诞生的辉煌时刻，节奏激昂。"
-            },
-            {
-                src: "assets/music/The_Second_Starnucleus_Tower.mp3",
-                desc: "The Second Starnucleus Tower - 宏伟的建筑与古老的科技感交织。"
-            },
-            {
-                src: "assets/music/Astheral.mp3",
+                src: "assets/music/Astheral.mp3",   
                 desc: "Astheral - 象征星塔诞生的主题曲。旋律宏大而悠远，使用了管弦乐与合成器的混合编制。"
+            },
+            {
+                src: "assets/music/Iridis_Medusae_Vinum.mp3",
+                desc: "Iridis Medusae Vinum - 充满了神秘色彩的旋律，仿佛置身于幻彩的星云之中。"
             },
             {
                 src: "assets/music/Nyxarion.mp3",
                 desc: "Nyxarion - 深邃夜空下的低语，静谧而略带忧伤。"
             },
             {
-                src: "assets/music/Iridis_Medusae_Vinum.mp3",
-                desc: "Iridis Medusae Vinum - 充满了神秘色彩的旋律，仿佛置身于幻彩的星云之中。"
+                src: "assets/music/Starborn_of_Luciarion.mp3",
+                desc: "Starborn of Luciarion - 表现星之子诞生的辉煌时刻，节奏激昂。"
+            },
+            {
+                src: "assets/music/The_Second_Starnucleus_Tower.mp3",
+                desc: "The Second Starnucleus Tower - 宏伟的建筑与古老的科技感交织。"
             },
             {
                 src: "assets/music/Zephyr_Leviathan.mp3",
@@ -1011,10 +1011,7 @@
 
         function loadAllMetadata() {
             musicData.forEach((track, index) => {
-                // 确保 URL 是绝对路径，避免 jsmediatags 在某些环境下解析相对路径出错
-                const absoluteUrl = new URL(track.src, window.location.href).href;
-
-                fetchMetadata(absoluteUrl, (data) => {
+                fetchMetadata(track.src, (data) => {
                     // 将读取到的数据存入 track 对象
                     musicData[index] = { ...musicData[index], ...data };
                     // 刷新列表显示
@@ -1028,13 +1025,18 @@
         }
 
         function fetchMetadata(url, callback) {
-            if (metadataCache.has(url)) {
-                callback(metadataCache.get(url));
+            // 关键修复：虽然播放器可以使用相对路径，但 jsmediatags 库在读取文件时，
+            // 如果不使用完整的绝对路径 (http://...), 可能会因为路径解析问题导致读取失败。
+            // 这里我们在内部自动转换，不影响你上面的配置。
+            const absoluteUrl = new URL(url, window.location.href).href;
+
+            if (metadataCache.has(absoluteUrl)) {
+                callback(metadataCache.get(absoluteUrl));
                 return;
             }
 
             // 使用 jsmediatags 读取
-            window.jsmediatags.read(url, {
+            window.jsmediatags.read(absoluteUrl, {
                 onSuccess: function(tag) {
                     const tags = tag.tags;
                     let coverUrl = "";
@@ -1056,14 +1058,14 @@
                         cover: coverUrl
                     };
                     
-                    metadataCache.set(url, metadata);
+                    metadataCache.set(absoluteUrl, metadata);
                     callback(metadata);
                 },
                 onError: function(error) {
-                    console.warn("读取元数据失败 (可能是跨域或文件不存在):", url, error);
+                    console.warn("读取元数据失败:", url, error);
                     // 失败时的默认值
                     const fallback = {
-                        title: url.split('/').pop(),
+                        title: url.split('/').pop().replace(/%20/g, " "), // 解码文件名
                         artist: "Unknown Artist",
                         album: "Unknown Album",
                         cover: "" 
