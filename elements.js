@@ -142,31 +142,35 @@ function closeLightbox() {
 const musicData = [
     {
         src: "assets/music/Starborn_of_Luciarion.mp3",
-        desc: "星民天生就拥有与女神以及彼此的连结从而共享星祝的能力。在他们发现星祝的运作逻辑以后，星裔们相互团结，共同在星球上建造了几座高塔，作为星裔们共同连结的场所，由此集中和强化了连结网络。在高塔完成建造后，星民们围绕几座高塔，自发地形成了几大部落。"
+        desc: "The Starborn are naturally endowed with a connection to the Goddess and to each other, allowing them to share the 'Stellar Blessing'. After discovering the logic behind this blessing, the Starkin united to build several towers on the planet. These towers serve as communal connection hubs, concentrating and strengthening the network. Upon completion, the Starborn spontaneously formed major tribes around these towers."
     },  
     {
         src: "assets/music/The_Second_Starnucleus_Tower.mp3",
-        desc: "北境的星核塔位于群山环绕的平原，它矗立于平原中央 ，如同王冠上的明珠，仿佛这片地貌就是为它而生。北境的星核塔由主副塔组成，其中主塔作为主要的连结场所和重要仪式集会的举办地主塔高耸挺拔，直入云天，总高约130米，塔基内径36米，外径45米，算上外延部分则长达65米。星核塔神圣而宏伟，充满了中世纪教会建筑和哥特式建筑的风格，更不必说洁白华丽的高塔内部，和星核塔中心的那个巨大、璀璨、圣洁的星核与星核基座。"
+        desc: "The Starnucleus Tower of the North stands in a plain surrounded by mountains. Like a jewel in a crown, the landscape seems created for it. Comprising a main and secondary tower, it serves as the primary connection site and venue for important rituals. The main tower soars 130 meters into the sky, with a style reminiscent of medieval ecclesiastical and Gothic architecture. Inside, it is pristine and magnificent, housing the massive, radiant, and holy Starnucleus at its center."
     },  
     {
         src: "assets/music/Astheral.mp3",   
-        desc: "尽管星祝与女神的福泽同为女神撒播到卢瑟利恩的能量，但星祝是一种基于灵魂的能量传播，只有星裔能够接收，利用和辐射这种能量。灵魂的能量不会而由于传播而衰减，因此女神与星裔的连结是一种能量的双向传播，而星裔与星裔之间也可以进行相对微弱的星祝传播。星祝的传播逻辑可以用p2p网络类比，那么相应地，参与传输的星裔越多，星裔获取的星祝就越多。至于女神，作为最大的端口，她理所应当成为了产出和收入星祝最多的个体，可以说星裔的繁荣与女神的强盛是相辅相成的。"
+        desc: "Although the 'Stellar Blessing' and the 'Goddess's Grace' are both energies disseminated by the Goddess to Luciarion, the Stellar Blessing is soul-based. Only the Starkin can receive, utilize, and radiate this energy. Soul energy does not decay with transmission; thus, the connection is a two-way flow. The propagation logic is analogous to a P2P network: the more Starkin participate, the more energy they receive. As the largest node, the Goddess naturally produces and receives the most energy—the prosperity of the Starkin and the power of the Goddess are mutually reinforcing."
     },
     {
         src: "assets/music/Nyxarion.mp3",
-        desc: "这颗星球的体积远大于Luciarion，在漫长的岁月里经受了无数的陨石冲击与剧烈的地质运动，这使得它如同火球一般向外散发着热能和辐射。即使如同火球，和基于聚变供能的恒星比起来，它的能量微弱的如同一个会自发光的月亮。如果地球与月球的生态彼此互换，月球的居民遥望地球时，是否也会认为那是一颗巨大的月亮呢？"
+        desc: "This planet is far larger than Luciarion. Over eons, it has withstood countless meteorite impacts and violent geological movements, radiating heat and radiation like a fireball. Yet, compared to a fusion-powered star, its energy is as faint as a self-luminous moon. If the ecosystems of Terra (Earth) and Luna (Moon) were swapped, would the inhabitants of the moon look at Earth and consider it just a giant moon?"
     },
     {
         src: "assets/music/Iridis_Medusae_Vinum.mp3",
-        desc: "它们可以毫不费力地漂浮在低空中，并像泰拉的水母那样上下飘动。虹树水母在休眠时会攀附在星云拱树上，在休眠期，它们的体内将收获的能量转化为一种香甜的液体，储存在体内以备不时之需。这种液体被星裔称为“水母酿”，星民通过刺激它们的触手可以促进虹树水母排出少量液体，因而水母酿成了星民们稀缺珍贵的饮品。"
+        desc: "These creatures float effortlessly in the low altitude, drifting up and down like jellyfish on Terra. The 'Iris-Tree Jellyfish' attach themselves to Nebula Arch-Trees during dormancy. In this phase, they convert harvested energy into a sweet liquid stored within their bodies. Known to the Starkin as 'Jellyfish Nectar', this scarce and precious beverage can be harvested in small amounts by stimulating their tentacles."
     },
     {
         src: "assets/music/Zephyr_Leviathan.mp3",
-        desc: "这种生物最神奇的是利用拉格朗日点漂浮在Lucarion本就稀薄的大气中，由于Luciarion和Nyxarion的重量和体积差异，双星的拉格朗日点位于离Luciarion很近的大气附近，因此云鲲就像是另一种天体或是云朵一样在luciarion的天空中。由于其巨大的体型，云鲲并不罕见，然而，这种生物的数量并不多，根据我们的估计，luciarion的云鲲数量大约在100~200只左右。"
+        desc: "The most amazing feature of the Zephyr Leviathan is its ability to use Lagrange points to float in Luciarion's thin atmosphere. Due to the mass and volume difference between the twin stars, the Lagrange point lies very close to Luciarion's atmosphere. Thus, these leviathans act like celestial bodies or living clouds in the sky. Despite their massive size making them easy to spot, they are rare; we estimate there are only about 100-200 of them on Luciarion."
     },
     {
         src: "assets/music/First_Sunrise.mp3",
-        desc: "我的故乡永远被灿烂的繁星笼罩，那里并没有像太阳一样，可以照亮整片天空的天体。我一直以为只有那些冰冷遥远的光点才叫做恒星，从来没有想过它们可以如此温暖和光辉。原来那些东西看似冰冷，其实只不过是我离它太远。\n我也许终于找到了属于我的那颗星星呢..."
+        desc: "My homeland is forever shrouded in brilliant stars; there is no celestial body like the sun to illuminate the entire sky. I always thought only those cold, distant points of light were stars. I never imagined they could be so warm and radiant. Perhaps those things seemed cold simply because I was too far away. Maybe I have finally found the star that belongs to me..."
+    },
+    {
+        src: "assets/music/What Are You Thinking About, Ta Chan.mp3",
+        desc: "Ta Chan, Ta Chan... Bearing hatred that doesn't belong to you, carrying expectations that aren't yours to fulfill—how will you ever find your way out of this endless path of revenge?"
     }
 ];
 
