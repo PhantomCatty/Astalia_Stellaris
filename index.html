@@ -186,8 +186,8 @@
             background-image: var(--content-bg-image, linear-gradient(135deg, #667eea 0%, #764ba2 100%));
             background-repeat: no-repeat;
             background-position: center center;
-            /* 强制拉伸背景图至容器的 100% 宽和 100% 高 */
-            background-size: 100% 100% !important;
+            /* 保持图片比例，覆盖整个容器 (可能会裁剪边缘) */
+            background-size: cover !important;
             
             opacity: 1; /* 提高不透明度，让背景图清晰可见 */
             transition: background-image 0.5s ease; /* 添加背景切换过渡动画 */
