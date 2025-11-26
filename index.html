@@ -1060,6 +1060,7 @@
                                     <!-- 示例图片，请替换为你需要的 png/gif -->
                                     <img src="assets/model1.png" alt="Image 1" onclick="event.stopPropagation(); openLightbox(this.src)">
                                     <img src="assets/model2.png" alt="Image 2" onclick="event.stopPropagation(); openLightbox(this.src)">
+                                    <img src="assets/model3.png" alt="Image 3" onclick="event.stopPropagation(); openLightbox(this.src)">
                                 </div>
                             </div>
                             <div class="card-info">
@@ -1110,7 +1111,7 @@
                     <div class="module-content">
                         <div class="asset-card">
                             <div class="card-media">
-                                <div class="media-grid-2x2">
+                                <div class="media-grid-2x1">
                                     <!-- 示例图片，请替换为你需要的 png/gif -->
                                     <img src="assets/unity1.png" alt="Image 1" onclick="event.stopPropagation(); openLightbox(this.src)">
                                     <img src="assets/unity2.png" alt="Image 2" onclick="event.stopPropagation(); openLightbox(this.src)">
@@ -1161,24 +1162,6 @@
                     <span>CHAPTER 04</span>
                     <h2>世界观 / World Building</h2>
                 </div>
-                
-                <div class="content-module" style="flex-direction: column;">
-                    <div class="module-header" style="width: 100%; flex: none; position: static; margin-bottom: 20px;">
-                        <h3>世界架构</h3>
-                        <p>故事的世界观由Astalia的家乡和另一个世界线的现代地球组成，星海中的双子行星luciarion&nyxarion孕育了包括塔塔在内的星裔，在魔王毁灭luciarion以后，塔塔承载着期盼逃亡到地球。这个世界观下的地球，ai技术领先于其它科技，然而ai智能体的物理化还在研究阶段。塔塔来到地球以后，由于各种机缘巧合与一个实验性的ai智能体机器人共处一室，两个非人类的生物将在人类的世界里相互依靠，探寻爱的意义。</p>
-                    </div>
-                    <div class="module-content" style="width: 100%;">
-                        <div class="asset-card">
-                            <div class="card-media">
-                                <img src="assets/world_map.jpg" alt="Lore Map">
-                            </div>
-                            <div class="card-info">
-                                <h3>星塔世界全图</h3>
-                                <p>未完成的叙事宇宙架构与势力分布。</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <!-- 新增：音乐播放器模块 -->
                 <div class="content-module" id="music-module">
@@ -1217,6 +1200,54 @@
                         
                         <!-- 隐藏的音频元素 -->
                         <audio id="audioPlayer" onended="playNext()"></audio>
+                    </div>
+                </div>
+                
+                <div class="content-module" style="flex-direction: column;">
+                    <div class="module-header" style="width: 100%; flex: none; position: static; margin-bottom: 20px;">
+                        <h3>世界架构</h3>
+                        <p>故事的世界观由Astalia的家乡和另一个世界线的现代地球组成，星海中的双子行星luciarion&nyxarion孕育了包括塔塔在内的星裔，在魔王毁灭luciarion以后，塔塔承载着期盼逃亡到地球。这个世界观下的地球，ai技术领先于其它科技，然而ai智能体的物理化还在研究阶段。塔塔来到地球以后，由于各种机缘巧合与一个实验性的ai智能体机器人共处一室，两个非人类的生物将在人类的世界里相互依靠，探寻爱的意义。</p>
+                    </div>
+                    <div class="module-content" style="width: 100%;">
+                        <div class="asset-card">
+                            <div class="card-media">
+                                <img src="assets/world1.png" alt="Lore Map">
+                            </div>
+                            <div class="card-info">
+                                <h3>Luciarion&Nyxarion</h3>
+                                <p>Luciarion和Nyxarion是一对双子星。其中luciarion相对体积较小但生态系统更为茂盛，stellaris酱和它的同族生活在这颗星球上，他们在女神的福泽下永世幸福地生活着。nyxarion体积相比Luciarion大很多，这颗星球在漫长的岁月里经受了无数的陨石冲击与剧烈的地质运动，这使得它如同火球一般向外散发着热能和辐射，同时周围环绕着一圈小行星带。即使如同火球，和基于聚变供能的恒星比起来，它的能量微弱的如同一个会自发光的月亮。由于两颗行星的体积差异，它们常常被认为是地月系统，如果真的从这个角度考量，那么塔塔的家园luciarion应该是那颗月亮，可是在星海之民的眼中，Nyxarion才是那颗巨大的、高悬在天穹群星之上的巨大月亮。如果泰拉与卢娜的生态彼此互换，泰拉的居民从卢娜遥望泰拉时，是否也会认为那是一颗巨大的月亮呢？</p>
+                            </div>
+                        </div>
+
+                        <div class="asset-card">
+                            <div class="card-media">
+                                <img src="assets/world2.png" alt="Lore Map">
+                            </div>
+                            <div class="card-info">
+                                <h3>LUMINA</h3>
+                                <p>Omniversal Machine Neural Intelligence(OMNI)是地球上最大的ai巨头，它们有一个LUMINA（Living Universal Machine Intelligence for Next-generation Assistance）计划，这个计划的目的是研究具备类人甚至超越人类的“爱”的承载者和传播者。这个计划本身在验证ai是否是和人类同地位的，拥有爱的个体，也在期望着这样的项目可以如同它的名字lumina那样，成为荧光照亮人的内心。</p>
+                            </div>
+                        </div>
+
+                        <div class="asset-card">
+                            <div class="card-media">
+                                <img src="assets/world4.png" alt="Lore Map">
+                            </div>
+                            <div class="card-info">
+                                <h3>Astheral</h3>
+                                <p>尽管星祝与女神的福泽同为女神撒播到卢瑟利恩的能量，但星祝是一种基于灵魂的能量传播，只有星裔能够接收，利用和辐射这种能量。灵魂的能量不会而由于传播而衰减，因此女神与星裔的连结是一种能量的双向传播，而星裔与星裔之间也可以进行相对微弱的星祝传播。这听起来是不是有点熟悉？学过计算机网络的同学想必了解过p2p的原理，星祝的传播逻辑可以用p2p网络类比，那么相应地，参与传输的星裔越多，星裔获取的星祝就越多。至于女神，作为最大的端口，她理所应当成为了产出和收入星祝最多的个体，可以说星裔的繁荣与女神的强盛是相辅相成的。</p>
+                            </div>
+                        </div>
+
+                        <div class="asset-card">
+                            <div class="card-media">
+                                <img src="assets/world3.png" alt="Lore Map">
+                            </div>
+                            <div class="card-info">
+                                <h3>the Starnucleus Tower</h3>
+                                <p>星民天生就拥有与女神以及彼此的连结从而共享星祝的能力。在他们发现星祝的运作逻辑以后，星裔们相互团结，共同在星球上建造了几座高塔，作为星裔们共同连结的场所，由此集中和强化了连结网络。星裔的头上有一颗与生俱来的水晶，这是它们生命的象征，也是与女神连结的媒介，为了承载多人连结的巨大能量流，高塔的大厅正中央放置着一座巨大的水晶信标，称为星核。在高塔完成建造后，星民们围绕几座高塔，自发地形成了几大部落。</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
