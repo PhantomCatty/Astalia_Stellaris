@@ -681,6 +681,63 @@
         .playlist::-webkit-scrollbar-thumb { background: #ccc; border-radius: 3px; }
         .playlist::-webkit-scrollbar-thumb:hover { background: var(--primary-color); }
 
+        /* --- Loading Screen 样式 --- */
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #eeeeee;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease-out;
+        }
+
+        .loading-content {
+            text-align: center;
+            width: 80%;
+            max-width: 400px;
+        }
+
+        .loading-title {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 4px;
+            background-color: rgba(0,0,0,0.1);
+            border-radius: 2px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background-color: var(--primary-color);
+            width: 0%;
+            transition: width 0.2s ease;
+            box-shadow: 0 0 10px rgba(126, 70, 255, 0.5);
+        }
+
+        .loading-text {
+            margin-top: 15px;
+            font-family: 'Rajdhani', sans-serif;
+            color: #888;
+            font-size: 1rem;
+            letter-spacing: 2px;
+        }
+
         /* --- Lightbox (大图查看) 样式 --- */
         .lightbox-modal {
             display: none; /* 默认隐藏 */
@@ -728,6 +785,17 @@
     </style>
 </head>
 <body>
+
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loading-content">
+            <div class="loading-title">ASTALIA STELLARIS</div>
+            <div class="progress-container">
+                <div class="progress-bar"></div>
+            </div>
+            <div class="loading-text">INITIALIZING SYSTEM... 0%</div>
+        </div>
+    </div>
 
     <!-- 1. 背景层 -->
     <video class="bg-video" autoplay loop muted playsinline>
@@ -1163,5 +1231,105 @@
     </div>
 
     <script src="elements.js"></script>
+    
+    <script>
+        // --- Loading Screen Logic ---
+        document.addEventListener("DOMContentLoaded", function() {
+            const loadingScreen = document.getElementById('loading-screen');
+            const progressBar = document.querySelector('.progress-bar');
+            const loadingText = document.querySelector('.loading-text');
+            
+            // 获取页面上所有的图片和视频
+            // 优先关注背景视频和其他大资源
+            const videos = Array.from(document.querySelectorAll('video'));
+            const images = Array.from(document.querySelectorAll('img'));
+            
+            // 手动添加需要预加载的 CSS 背景图 (关键的大图，如立绘)
+            // 这样可以防止进入页面后立绘还在闪烁加载
+            const cssBackgrounds = [
+                'assets/char_tachie.png',
+                'assets/sprite_variations1.png',
+                'assets/sprite_variations2.png',
+                'assets/sprite_variations3.png'
+            ];
+            
+            const preloadImages = cssBackgrounds.map(src => {
+                const img = new Image();
+                img.src = src;
+                return img;
+            });
+
+            // 合并资源列表
+            const assets = [...videos, ...images, ...preloadImages];
+            let total = assets.length;
+            let loaded = 0;
+
+            // 如果没有资源，直接结束
+            if (total === 0) {
+                finishLoading();
+                return;
+            }
+
+            // 更新进度条
+            function updateProgress() {
+                loaded++;
+                const percent = Math.floor((loaded / total) * 100);
+                
+                if (progressBar) progressBar.style.width = percent + '%';
+                if (loadingText) loadingText.innerText = `INITIALIZING SYSTEM... ${percent}%`;
+                
+                if (loaded >= total) {
+                    // 全部加载完成，稍微延迟一下让用户看到100%
+                    setTimeout(finishLoading, 500);
+                }
+            }
+
+            // 结束加载，隐藏遮罩
+            function finishLoading() {
+                if (!loadingScreen) return;
+                loadingScreen.style.opacity = '0';
+                // 等待淡出动画结束后移除元素 (display: none)
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                    
+                    // 尝试自动播放背景视频（如果被浏览器策略阻止，这里可能需要用户交互）
+                    const bgVideo = document.querySelector('.bg-video');
+                    if (bgVideo && bgVideo.paused) {
+                        bgVideo.play().catch(e => console.log("Background video autoplay blocked:", e));
+                    }
+                }, 500);
+            }
+
+            // 为每个资源添加加载监听
+            assets.forEach(asset => {
+                if (asset.tagName === 'IMG') {
+                    if (asset.complete) {
+                        updateProgress();
+                    } else {
+                        asset.addEventListener('load', updateProgress);
+                        asset.addEventListener('error', updateProgress); // 加载失败也算完成，避免卡死
+                    }
+                } else if (asset.tagName === 'VIDEO') {
+                    // 对于视频，readyState >= 3 (HAVE_FUTURE_DATA) 通常足以开始播放
+                    // 或者使用 'loadeddata' 事件表示首帧已加载
+                    if (asset.readyState >= 3) {
+                        updateProgress();
+                    } else {
+                        // 使用 loadeddata 确保至少加载了第一帧
+                        asset.addEventListener('loadeddata', updateProgress);
+                        asset.addEventListener('error', updateProgress);
+                    }
+                }
+            });
+
+            // 安全兜底：如果10秒内没加载完（比如网络卡顿或资源挂了），强制进入页面
+            setTimeout(() => {
+                if (loadingScreen && loadingScreen.style.display !== 'none') {
+                    console.warn("Loading timed out, forcing entry.");
+                    finishLoading();
+                }
+            }, 10000); // 10秒超时
+        });
+    </script>
 </body>
 </html>
