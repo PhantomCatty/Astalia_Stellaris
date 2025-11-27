@@ -154,11 +154,11 @@ const musicData = [
     },
     {
         src: "assets/music/Nyxarion.mp3",
-        desc: "This planet is far larger than Luciarion. Over eons, it has withstood countless meteorite impacts and violent geological movements, radiating heat and radiation like a fireball. Yet, compared to a fusion-powered star, its energy is as faint as a self-luminous moon. If the ecosystems of Terra (Earth) and Luna (Moon) were swapped, would the inhabitants of the moon look at Earth and consider it just a giant moon?"
+        desc: "This planet is far larger than Luciarion. Over eons, it has withstood countless meteorite impacts and violent geological movements, radiating heat and radiation like a fireball. Yet, compared to a fusion-powered star, its energy is as faint as a self-luminous moon. If the ecosystems of the Earth (Earth) and Luna (Moon) were swapped, would the inhabitants of the moon look at Earth and consider it just a giant moon?"
     },
     {
         src: "assets/music/Iridis_Medusae_Vinum.mp3",
-        desc: "These creatures float effortlessly in the low altitude, drifting up and down like jellyfish on Terra. The 'Iridis Medusae' attach themselves to Nebula Arch-Trees during dormancy. In this phase, they convert harvested energy into a sweet liquid stored within their bodies. Known to the Starborns as 'Iridis Medusae Vinum', this scarce and precious beverage can be harvested in small amounts by stimulating their tentacles."
+        desc: "These creatures float effortlessly in the low altitude, drifting up and down like jellyfish on the Earth. The 'Iridis Medusae' attach themselves to Nebula Arch-Trees during dormancy. In this phase, they convert harvested energy into a sweet liquid stored within their bodies. Known to the Starborns as 'Iridis Medusae Vinum', this scarce and precious beverage can be harvested in small amounts by stimulating their tentacles."
     },
     {
         src: "assets/music/Zephyr_Leviathan.mp3",
