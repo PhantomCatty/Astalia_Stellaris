@@ -142,7 +142,7 @@ function closeLightbox() {
 const musicData = [
     {
         src: "assets/music/Starborn_of_Luciarion.mp3",
-        desc: "The Starborn are naturally endowed with a connection to the Goddess and to each other, allowing them to share the 'Stellar Blessing'. After discovering the logic behind this blessing, the Starborns united to build several towers on the planet. These towers serve as communal connection hubs, concentrating and strengthening the network. Upon completion, the Starborn spontaneously formed major tribes around these towers."
+        desc: "The Starborn are naturally endowed with a connection to the Goddess and to each other, allowing them to share the 'Astheral'. After discovering the logic behind this energy, the Starborns united to build several towers on the planet. These towers serve as communal connection hubs, concentrating and strengthening the network. Upon completion, the Starborn spontaneously formed major tribes around these towers."
     },  
     {
         src: "assets/music/The_Second_Starnucleus_Tower.mp3",
@@ -150,7 +150,7 @@ const musicData = [
     },  
     {
         src: "assets/music/Astheral.mp3",   
-        desc: "Although the 'Stellar Blessing' and the 'Goddess's Grace' are both energies disseminated by the Goddess to Luciarion, the Stellar Blessing is soul-based. Only the Starborns can receive, utilize, and radiate this energy. Soul energy does not decay with transmission; thus, the connection is a two-way flow. The propagation logic is analogous to a P2P network: the more Starborns participate, the more energy they receive. As the largest node, the Goddess naturally produces and receives the most energy—the prosperity of the Starborns and the power of the Goddess are mutually reinforcing."
+        desc: "Although the 'Astheral' and the 'Goddess's Grace' are both energies disseminated by the Goddess to Luciarion, the Astheral is soul-based. Only the Starborns can receive, utilize, and radiate this energy. Soul energy does not decay with transmission; thus, the connection is a two-way flow. The propagation logic is analogous to a P2P network: the more Starborns participate, the more energy they receive. As the largest node, the Goddess naturally produces and receives the most energy—the prosperity of the Starborns and the power of the Goddess are mutually reinforcing."
     },
     {
         src: "assets/music/Nyxarion.mp3",
