@@ -166,7 +166,7 @@ const musicData = [
     },
     {
         src: "assets/music/First_Sunrise.mp3",
-        desc: "My homeland is forever shrouded in brilliant stars; there is no celestial body like the sun to illuminate the entire sky. I always thought only those cold, distant points of light were stars. I never imagined they could be so warm and radiant. Perhaps those things seemed cold simply because I was too far away. Maybe I have finally found the star that belongs to me..."
+        desc: "My homeland is forever shrouded in brilliant stars, but there is no celestial body like the sun to illuminate the entire sky. I always thought only those cold, distant points of light were called 'stars'. I never imagined they could be so warm and radiant. Perhaps those things seemed cold simply because I was too far away. Maybe I have finally found the star that belongs to me..."
     },
     {
         src: "assets/music/What Are You Thinking About, Ta Chan.mp3",
