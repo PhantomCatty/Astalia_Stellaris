@@ -158,7 +158,7 @@ const musicData = [
     },
     {
         src: "assets/music/Iridis_Medusae_Vinum.mp3",
-        desc: "These creatures float effortlessly in the low altitude, drifting up and down like jellyfish on Terra. The 'Iris-Tree Jellyfish' attach themselves to Nebula Arch-Trees during dormancy. In this phase, they convert harvested energy into a sweet liquid stored within their bodies. Known to the Starborns as 'Jellyfish Nectar', this scarce and precious beverage can be harvested in small amounts by stimulating their tentacles."
+        desc: "These creatures float effortlessly in the low altitude, drifting up and down like jellyfish on Terra. The 'Iridis Medusae' attach themselves to Nebula Arch-Trees during dormancy. In this phase, they convert harvested energy into a sweet liquid stored within their bodies. Known to the Starborns as 'Iridis Medusae Vinum', this scarce and precious beverage can be harvested in small amounts by stimulating their tentacles."
     },
     {
         src: "assets/music/Zephyr_Leviathan.mp3",
