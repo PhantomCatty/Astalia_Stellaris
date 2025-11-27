@@ -142,7 +142,7 @@ function closeLightbox() {
 const musicData = [
     {
         src: "assets/music/Starborn_of_Luciarion.mp3",
-        desc: "The Starborn are naturally endowed with a connection to the Goddess and to each other, allowing them to share the 'Stellar Blessing'. After discovering the logic behind this blessing, the Starkin united to build several towers on the planet. These towers serve as communal connection hubs, concentrating and strengthening the network. Upon completion, the Starborn spontaneously formed major tribes around these towers."
+        desc: "The Starborn are naturally endowed with a connection to the Goddess and to each other, allowing them to share the 'Stellar Blessing'. After discovering the logic behind this blessing, the Starborns united to build several towers on the planet. These towers serve as communal connection hubs, concentrating and strengthening the network. Upon completion, the Starborn spontaneously formed major tribes around these towers."
     },  
     {
         src: "assets/music/The_Second_Starnucleus_Tower.mp3",
@@ -150,7 +150,7 @@ const musicData = [
     },  
     {
         src: "assets/music/Astheral.mp3",   
-        desc: "Although the 'Stellar Blessing' and the 'Goddess's Grace' are both energies disseminated by the Goddess to Luciarion, the Stellar Blessing is soul-based. Only the Starkin can receive, utilize, and radiate this energy. Soul energy does not decay with transmission; thus, the connection is a two-way flow. The propagation logic is analogous to a P2P network: the more Starkin participate, the more energy they receive. As the largest node, the Goddess naturally produces and receives the most energy—the prosperity of the Starkin and the power of the Goddess are mutually reinforcing."
+        desc: "Although the 'Stellar Blessing' and the 'Goddess's Grace' are both energies disseminated by the Goddess to Luciarion, the Stellar Blessing is soul-based. Only the Starborns can receive, utilize, and radiate this energy. Soul energy does not decay with transmission; thus, the connection is a two-way flow. The propagation logic is analogous to a P2P network: the more Starborns participate, the more energy they receive. As the largest node, the Goddess naturally produces and receives the most energy—the prosperity of the Starborns and the power of the Goddess are mutually reinforcing."
     },
     {
         src: "assets/music/Nyxarion.mp3",
@@ -158,7 +158,7 @@ const musicData = [
     },
     {
         src: "assets/music/Iridis_Medusae_Vinum.mp3",
-        desc: "These creatures float effortlessly in the low altitude, drifting up and down like jellyfish on Terra. The 'Iris-Tree Jellyfish' attach themselves to Nebula Arch-Trees during dormancy. In this phase, they convert harvested energy into a sweet liquid stored within their bodies. Known to the Starkin as 'Jellyfish Nectar', this scarce and precious beverage can be harvested in small amounts by stimulating their tentacles."
+        desc: "These creatures float effortlessly in the low altitude, drifting up and down like jellyfish on Terra. The 'Iris-Tree Jellyfish' attach themselves to Nebula Arch-Trees during dormancy. In this phase, they convert harvested energy into a sweet liquid stored within their bodies. Known to the Starborns as 'Jellyfish Nectar', this scarce and precious beverage can be harvested in small amounts by stimulating their tentacles."
     },
     {
         src: "assets/music/Zephyr_Leviathan.mp3",
