@@ -14,8 +14,8 @@
     <style>
         :root {
             /* --- 核心配色：可根据你的角色配色调整 --- */
-            --primary-color: #7e46ff; /* 类似蔚蓝档案的清爽蓝 */
-            --accent-color: #ff88bf;  /* 强调色：粉色 */
+            --primary-color: #b246ff; /* 类似蔚蓝档案的清爽蓝 */
+            --accent-color: #63b6ff;  /* 强调色：粉色 */
             --text-dark: #000000;
             --text-light: #fdff9a;
             --text-standard: #e7e7e7;
@@ -610,6 +610,60 @@
             margin-top: 8px !important;
         }
 
+        /* --- 播放进度条样式 --- */
+        .player-progress-container {
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 0 5px;
+        }
+
+        .time-display {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 5px;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 600;
+        }
+
+        .progress-bar-wrapper {
+            width: 100%;
+            height: 6px;
+            background: rgba(0,0,0,0.1);
+            border-radius: 3px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: var(--primary-color);
+            border-radius: 3px;
+            width: 0%;
+            pointer-events: none;
+        }
+
+        .progress-handle {
+            position: absolute;
+            top: 50%;
+            left: 0%;
+            width: 12px;
+            height: 12px;
+            background: #fff;
+            border: 2px solid var(--primary-color);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            cursor: grab;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: transform 0.1s;
+        }
+
+        .progress-handle:active {
+            cursor: grabbing;
+            transform: translate(-50%, -50%) scale(1.2);
+        }
+
         .player-right {
             flex: 1;
             display: flex;
@@ -1186,6 +1240,19 @@
                                     ▶
                                 </button>
                             </div>
+                            
+                            <!-- 进度条模块 -->
+                            <div class="player-progress-container">
+                                <div class="time-display">
+                                    <span id="currentTime">0:00</span>
+                                    <span id="duration">0:00</span>
+                                </div>
+                                <div class="progress-bar-wrapper" id="progressBarWrapper">
+                                    <div class="progress-bar-fill" id="progressBarFill"></div>
+                                    <div class="progress-handle" id="progressHandle"></div>
+                                </div>
+                            </div>
+
                             <div class="current-song-info">
                                 <h4 id="currentTitle">Song Title</h4>
                                 <span id="currentArtist">Artist Name</span>

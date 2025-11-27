@@ -450,6 +450,110 @@ function stopAllAudio(source, specificVideoElement = null) {
     });
 }
 
+// --- 进度条控制逻辑 ---
+const progressBarWrapper = document.getElementById('progressBarWrapper');
+const progressBarFill = document.getElementById('progressBarFill');
+const progressHandle = document.getElementById('progressHandle');
+const currentTimeEl = document.getElementById('currentTime');
+const durationEl = document.getElementById('duration');
+
+let isDraggingProgress = false;
+
+function initProgressBar() {
+    if (audioPlayer) {
+        audioPlayer.addEventListener('timeupdate', updateProgress);
+        audioPlayer.addEventListener('loadedmetadata', () => {
+            if(durationEl) durationEl.innerText = formatTime(audioPlayer.duration);
+        });
+    }
+
+    if (progressBarWrapper) {
+        progressBarWrapper.addEventListener('click', (e) => {
+            if (!audioPlayer) return;
+            const rect = progressBarWrapper.getBoundingClientRect();
+            const pos = (e.clientX - rect.left) / rect.width;
+            if (isFinite(audioPlayer.duration)) {
+                audioPlayer.currentTime = pos * audioPlayer.duration;
+            }
+        });
+
+        progressBarWrapper.addEventListener('mousedown', (e) => {
+            isDraggingProgress = true;
+            updateDrag(e);
+            document.addEventListener('mousemove', updateDrag);
+            document.addEventListener('mouseup', stopDrag);
+        });
+        
+        progressBarWrapper.addEventListener('touchstart', (e) => {
+            isDraggingProgress = true;
+            updateDrag(e.touches[0]);
+            document.addEventListener('touchmove', onTouchMove, { passive: false });
+            document.addEventListener('touchend', stopDrag);
+        });
+    }
+}
+
+function onTouchMove(e) {
+    e.preventDefault();
+    updateDrag(e.touches[0]);
+}
+
+function updateDrag(e) {
+    if (!isDraggingProgress || !audioPlayer) return;
+    const rect = progressBarWrapper.getBoundingClientRect();
+    let pos = (e.clientX - rect.left) / rect.width;
+    pos = Math.max(0, Math.min(1, pos));
+    
+    const percentage = pos * 100;
+    if(progressBarFill) progressBarFill.style.width = percentage + '%';
+    if(progressHandle) progressHandle.style.left = percentage + '%';
+    
+    if(currentTimeEl && isFinite(audioPlayer.duration)) {
+        currentTimeEl.innerText = formatTime(pos * audioPlayer.duration);
+    }
+}
+
+function stopDrag(e) {
+    if (isDraggingProgress && audioPlayer) {
+        isDraggingProgress = false;
+        document.removeEventListener('mousemove', updateDrag);
+        document.removeEventListener('mouseup', stopDrag);
+        document.removeEventListener('touchmove', onTouchMove);
+        document.removeEventListener('touchend', stopDrag);
+        
+        const rect = progressBarWrapper.getBoundingClientRect();
+        const clientX = e.changedTouches ? e.changedTouches[0].clientX : e.clientX;
+        
+        let pos = (clientX - rect.left) / rect.width;
+        pos = Math.max(0, Math.min(1, pos));
+        if (isFinite(audioPlayer.duration)) {
+             audioPlayer.currentTime = pos * audioPlayer.duration;
+        }
+    }
+}
+
+function updateProgress() {
+    if (isDraggingProgress || !audioPlayer) return;
+    
+    const current = audioPlayer.currentTime;
+    const duration = audioPlayer.duration;
+    
+    if (isFinite(duration)) {
+        const percentage = (current / duration) * 100;
+        if(progressBarFill) progressBarFill.style.width = percentage + '%';
+        if(progressHandle) progressHandle.style.left = percentage + '%';
+        if(currentTimeEl) currentTimeEl.innerText = formatTime(current);
+        if(durationEl) durationEl.innerText = formatTime(duration);
+    }
+}
+
+function formatTime(seconds) {
+    if (isNaN(seconds) || !isFinite(seconds)) return "0:00";
+    const min = Math.floor(seconds / 60);
+    const sec = Math.floor(seconds % 60);
+    return `${min}:${sec < 10 ? '0' + sec : sec}`;
+}
+
 // 初始化：页面加载时应用默认激活按钮的背景
 document.addEventListener('DOMContentLoaded', () => {
     const activeBtn = document.querySelector('.nav-btn.active');
@@ -461,6 +565,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     // 初始化播放器
     initPlayer();
+    // 初始化进度条
+    initProgressBar();
     // 初始化图片灯箱
     initLightbox();
 });
